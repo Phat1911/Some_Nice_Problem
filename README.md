@@ -191,3 +191,25 @@ If a valid redistribution exists, the answer is `YES`.
 ## Solution: U can totally releaze solution for this problem from above suggestion :vv.
 
 ## Time Complexity: **O(n)**
+
+
+# Problem 6: https://codeforces.com/contest/2188/problem/D
+
+## Description: 
+
+  This is problem what i spend the most time on (this is my first D Div.2 =vv).
+
+## Observations:
+  - Only 1 & 1 = 1
+  - When we see at bit i-th of both x, y equal to `1`. we need to eliminate tranform one of two that bit to `0`.
+  - Now, we just transform `x` or `y` and keep the rest, then we will find a solution to make it as close as possible with x or y (because if the more x or y change, the greater the value of |x - p| + |y - q| will be).
+  - Final result is `p` and `y` or `x` and `q`
+
+## Strategy:
+  - We are going to filter all index where i-th of x and y is equal to `1`.
+  - Then, we're going to proccess(x, y, ids):
+    + Case 1: if we want that value smaller x, we will turn all index `i` where i-th bit of x and y is equal to `0` on. In other word, we will add to `1 << i`
+    + Case 2: if we want that value greater x, we will find a index where at i-th bit of x and y is equal to `0` and turn that bit on, then we will get the rest from that bit to 31-th bit. (because final answer does not exceed 2^31).
+
+  ## Complexity:
+  - Time complexity: **O(31)** ~ **O(1)**
