@@ -1,8 +1,5 @@
-<<<<<<< HEAD
-=======
 # All problem in this responsitory are my own creation, and i bet you cannot find any solution like me anything else
 
->>>>>>> aed0c32 (MySol)
 # Problem 1: https://codeforces.com/contest/2179/problem/D
 
 # Solution Strategy
@@ -36,7 +33,7 @@ By prioritizing higher numbers of `1` bits and resolving ties with smaller value
 - The sorting criteria are crucial for correctness.
 - This method is efficient and deterministic.
 - 
---------------------------------------------------------------
+
 # Problem 2: https://codeforces.com/contest/2179/problem/E
 
 # Gerrymandering with Bitstring Pattern
@@ -62,15 +59,12 @@ Determine whether there exist two arrays of non-negative integers `a[]` and `b[]
 - `a[i] + b[i] ≥ p[i]` for every district
 - The winning condition follows the bitstring `s`
 
----
 
 ## Key Idea
 
 For each district, we want:
 1. The total number of voters to be at least `p[i]`
 2. One party to strictly win according to `s[i]`
-
----
 
 ##  Strategy
 
@@ -124,12 +118,9 @@ If a valid redistribution exists, the answer is `YES`.
 
 ## Description: 
 
-<<<<<<< HEAD
   - This is a very interesting problem. It is essentially a basic dynamic programming problem, but you need to be truly subtle to recognize the right approach.
   - At the time, I'am posting this article, codeoforces is not allowing everyone read code and solution of others :)).
-=======
   This is a very interesting problem. It is essentially a basic dynamic programming problem, but you need to be truly subtle to recognize the right approach.
->>>>>>> aed0c32 (MySol)
 
 ## Observations:
 
@@ -150,11 +141,7 @@ If a valid redistribution exists, the answer is `YES`.
 
 ## Complexity:
   - Time complexity: **O(n^2)**
-<<<<<<< HEAD
-<<<<<<< HEAD
-=======
-=======
->>>>>>> aed0c32 (MySol)
+
 
 # Problem 4: https://codeforces.com/contest/2184/problem/D
 
@@ -194,12 +181,7 @@ If a valid redistribution exists, the answer is `YES`.
   of bit str when present the number 0 to n - 1 in binary, so now n is never processed on above algorithm. So we have to `+ (n >= k)`, and Why `+ (n >= k)` i think you totally understand why is it :vv.
 
   ## Complexity:
-<<<<<<< HEAD
   - Time complexity: **O(m^2 + (m * (h - k)))**
->>>>>>> 15eaef2 (ppp)
-=======
-  - Time complexity: **O(m^2 + (m * (h - k)))**
->>>>>>> aed0c32 (MySol)
 
 
 # Problem 5: https://codeforces.com/contest/2189/problem/C2
@@ -209,3 +191,25 @@ If a valid redistribution exists, the answer is `YES`.
 ## Solution: U can totally releaze solution for this problem from above suggestion :vv.
 
 ## Time Complexity: **O(n)**
+
+
+# Problem 6: https://codeforces.com/contest/2188/problem/D
+
+## Description: 
+
+  This is problem what i spend the most time on (this is my first D Div.2 =vv).
+
+## Observations:
+  - Only 1 & 1 = 1
+  - When we see at bit i-th of both x, y equal to `1`. we need to eliminate tranform one of two that bit to `0`.
+  - Now, we just transform `x` or `y` and keep the rest, then we will find a solution to make it as close as possible with x or y (because if the more x or y change, the greater the value of |x - p| + |y - q| will be).
+  - Final result is `p` and `y` or `x` and `q`
+
+## Strategy:
+  - We are going to filter all index where i-th of x and y is equal to `1`.
+  - Then, we're going to proccess(x, y, ids):
+    + Case 1: if we want that value smaller x, we will turn all index `i` where i-th bit of x and y is equal to `0` on. In other word, we will add to `1 << i`
+    + Case 2: if we want that value greater x, we will find a index where at i-th bit of x and y is equal to `0` and turn that bit on, then we will get the rest from that bit to 31-th bit. (because final answer does not exceed 2^31).
+
+  ## Complexity:
+  - Time complexity: **O(31)** ~ **O(1)**
