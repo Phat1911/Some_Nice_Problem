@@ -197,19 +197,25 @@ If a valid redistribution exists, the answer is `YES`.
 
 ## Description: 
 
-  This is problem what i spend the most time on (this is my first D Div.2 =vv).
+  This is the problem I spent the most time on (it’s my first Div.2 D problem 😅).
 
 ## Observations:
-  - Only 1 & 1 = 1
-  - When we see at bit i-th of both x, y equal to `1`. we need to eliminate tranform one of two that bit to `0`.
-  - Now, we just transform `x` or `y` and keep the rest, then we will find a solution to make it as close as possible with x or y (because if the more x or y change, the greater the value of |x - p| + |y - q| will be).
-  - Final result is `p` and `y` or `x` and `q`
+  - Only 1 & 1 = 1.
+
+  - When the i-th bit of both x and y is equal to 1, we need to eliminate it by transforming that bit of either x or y to 0.
+
+  - Now, we only transform x or y and keep the other unchanged. This helps us find a solution that is as close as possible to the original values, because the more x or y changes, the larger the value of |x - p| + |y - q| becomes.
+
+  - The final result will be either (p, y) or (x, q).
 
 ## Strategy:
-  - We are going to filter all index where i-th of x and y is equal to `1`.
-  - Then, we're going to proccess(x, y, ids):
-    + Case 1: if we want that value smaller x, we will turn all index `i` where i-th bit of x and y is equal to `0` on. In other word, we will add to `1 << i`
-    + Case 2: if we want that value greater x, we will find a index where at i-th bit of x and y is equal to `0` and turn that bit on, then we will get the rest from that bit to 31-th bit. (because final answer does not exceed 2^31).
+  - First, we filter all indices where the i-th bit of both x and y is equal to 1.
+
+  - Then, we process (x, y, ids):
+
+    + Case 1: If we want the value to be smaller than x, we will turn on all indices i where the i-th bit of both x and y is equal to 0. In other words, we add 1 << i.
+
+    + Case 2: If we want the value to be greater than x, we find an index where the i-th bit of both x and y is equal to 0 and turn that bit on. Then, we fill all remaining bits from that index up to the 31st bit (because the final answer does not exceed 2^31).
 
   ## Complexity:
   - Time complexity: **O(31)** ~ **O(1)**
